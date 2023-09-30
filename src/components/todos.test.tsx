@@ -42,6 +42,31 @@ describe('Todos component', () => {
 
     screen.getByPlaceholderText('Digite o nome da tarefa')
 
-    screen.getByText(taskTitle)
+    expect(screen.getByText(taskTitle)).toBeInTheDocument()
+    expect(screen.queryAllByText(taskTitle)).toHaveLength(1)
+  })
+
+  it('Should delete task on delete click', async () => {
+    render(<Todos />)
+
+    const inputElement = screen.getByPlaceholderText('Digite o nome da tarefa')
+
+    const taskTitle = 'Nova tarefa'
+
+    await userEvent.type(inputElement, taskTitle)
+    
+    screen.getByDisplayValue(taskTitle)
+
+    const addButtonElement = screen.getByLabelText('Adicionar tarefa')
+
+    await userEvent.click(addButtonElement)
+
+    screen.getByPlaceholderText('Digite o nome da tarefa')
+
+    const deleteButton = screen.getByLabelText(`Deletar tarefa: ${taskTitle}`)
+
+    await userEvent.click(deleteButton)
+
+    expect(screen.queryByText(taskTitle)).not.toBeInTheDocument()
   })
 })

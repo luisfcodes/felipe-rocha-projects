@@ -1,17 +1,21 @@
 import { useState } from 'react';
-import { AiOutlinePlus } from 'react-icons/ai'
+import { AiOutlinePlus, AiOutlineDelete } from 'react-icons/ai'
 import { Todo } from '../interfaces/todos';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid'
 
 const Todos = (): JSX.Element => {
-  const { register, handleSubmit, formState: { errors }, resetField } = useForm<{title: string}>()
+  const { register, handleSubmit, resetField } = useForm<{ title: string }>()
 
   const [todos, setTodos] = useState<Todo[]>([])
 
-  const handleAddClick = (data: {title: string}) => {
-    setTodos((prev) => [...prev, {id: uuid(), title: data.title, isCompleted: false}])
+  const handleAddClick = (data: { title: string }) => {
+    setTodos((prev) => [...prev, { id: uuid(), title: data.title, isCompleted: false }])
     resetField('title')
+  }
+
+  const handleDeleteClick = (id: string) => {
+    setTodos(prev => prev.filter((todo) => todo.id !== id))
   }
 
   return (
@@ -21,14 +25,22 @@ const Todos = (): JSX.Element => {
         <h1 className="text-2xl text-gray-50">My tasks</h1>
 
         <div className="flex items-center gap-4">
-          <input type="text" placeholder="Digite o nome da tarefa" className="rounded-md p-3 text-gray-50 bg-gray-600" {...register('title', { required: true })}/>
+          <input type="text" placeholder="Digite o nome da tarefa" className="rounded-md p-3 text-gray-50 bg-gray-600" {...register('title', { required: true })} />
           <button aria-label="Adicionar tarefa" onClick={() => handleSubmit(handleAddClick)()}>
-            <AiOutlinePlus size={24} className='text-gray-50'/>
+            <AiOutlinePlus size={24} className='text-gray-50' />
           </button>
         </div>
 
         {todos.map((todo) => (
-          <p key={todo.id} className='text-gray-50'>{todo.title}</p>
+          <div key={todo.id} className='flex items-center gap-4 w-full justify-between'>
+            <p className='text-gray-50 rounded-md p-3 bg-gray-700 w-full'>
+              {todo.title}
+            </p>
+            
+            <button aria-label={`Deletar tarefa: ${todo.title}`} onClick={() => handleDeleteClick(todo.id)}>
+              <AiOutlineDelete size={24} className="text-red-500"/>
+            </button>
+          </div>
         ))}
       </div>
 
