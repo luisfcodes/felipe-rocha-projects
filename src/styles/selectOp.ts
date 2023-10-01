@@ -23,7 +23,7 @@ export const Modal = styled.div`
   background-color: #f9fafb;
   position: absolute;
   bottom: 0;
-  width: 100vw;
+  width: 100%;
 
   .content {
     padding: 1rem;

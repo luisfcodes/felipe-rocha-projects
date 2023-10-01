@@ -3,7 +3,7 @@ import { CreditCard } from '../interfaces/creditCard'
 import * as s from '../styles/selectOp'
 import { FaAngleDown, FaArrowUp } from 'react-icons/fa'
 
-interface SelectOpProps {
+export interface SelectOpProps {
   creditCardList: CreditCard[]
   state: string
   setState: (card: string) => void
