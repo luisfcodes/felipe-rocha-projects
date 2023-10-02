@@ -1,31 +1,7 @@
-// import Todos from "./components/todos.component";
-import { useState } from "react";
-import SelectOp from "./components/selectOp.component";
-import { CreditCard } from "./interfaces/creditCard";
-
-const list: CreditCard[] = [
-  {
-    cartao: 'amex',
-  },
-  {
-    cartao: 'elo'
-  },
-  {
-    cartao: 'master'
-  },
-  {
-    cartao: 'visa'
-  },
-]
+import Steps from "./components/Steps";
 
 const App = () => {
-  const [state, setState] = useState("American Express")
-
-  return <SelectOp 
-    creditCardList={list} 
-    state={state}
-    setState={(card) => setState(card)}
-  />;
+  return <Steps active={2} />
 };
 
 export default App;

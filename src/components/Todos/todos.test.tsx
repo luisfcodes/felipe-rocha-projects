@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import Todos from './todos.component'
+import Todos from './index'
 
 describe('Todos component', () => {
   it('Should show my tasks message', () => {

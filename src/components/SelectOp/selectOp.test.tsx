@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react"
-import SelectOp from "./selectOp.component"
+import SelectOp from "./"
 
 describe('SelectOp Component', () => {
   it('Should render component', () => {

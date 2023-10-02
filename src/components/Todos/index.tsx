@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { AiOutlinePlus, AiOutlineDelete } from 'react-icons/ai'
-import { Todo } from '../interfaces/todos';
+import { Todo } from '../../interfaces/todos';
 import { useForm } from 'react-hook-form';
 import { v4 as uuid } from 'uuid'
 

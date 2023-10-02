@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { CreditCard } from '../interfaces/creditCard'
-import * as s from '../styles/selectOp'
+import { CreditCard } from '../../interfaces/creditCard'
+import * as s from './selectOp'
 import { FaAngleDown, FaArrowUp } from 'react-icons/fa'
 
 export interface SelectOpProps {
@@ -8,6 +8,21 @@ export interface SelectOpProps {
   state: string
   setState: (card: string) => void
 }
+
+// const list: CreditCard[] = [
+//   {
+//     cartao: 'amex',
+//   },
+//   {
+//     cartao: 'elo'
+//   },
+//   {
+//     cartao: 'master'
+//   },
+//   {
+//     cartao: 'visa'
+//   },
+// ]
 
 const SelectOp = ({ creditCardList, state, setState }: SelectOpProps) => {
   const [modalIsOpen, setModalIsOpen] = useState(false)

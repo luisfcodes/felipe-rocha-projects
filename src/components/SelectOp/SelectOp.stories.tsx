@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import SelectOp, { SelectOpProps } from './selectOp.component'
+import SelectOp, { SelectOpProps } from './index'
 import { Meta, StoryFn } from '@storybook/react'
 
 export default {
