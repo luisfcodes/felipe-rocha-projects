@@ -1,7 +1,7 @@
-import Steps from "./components/Steps";
+import Tooltip from './components/Tooltip'
 
 const App = () => {
-  return <Steps active={2} />
+  return <Tooltip icon='spider.png'/>
 };
 
 export default App;
